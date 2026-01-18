@@ -1,0 +1,48 @@
+(bu tam-sayıyla) (şu tam-sayının) asal-denemesi,
+  (bunla şunun eşitliği) doğruysa,
+    doğru,
+  değilse,
+    (((bunun şunla kalanı) 0'ın eşitliği) doğruysa,
+      yanlış,
+    yanlışsa,
+      (bunla (şunla 1'in toplamının) asal-denemesidir)).
+
+(bu tam-sayının) asallığı,
+  (bunun 2'den küçüklüğü) doğruysa,
+    yanlış,
+  değilse,
+    bunla 2'nin asal-denemesidir.
+
+(bu tam-sayıyla) (şu tam-sayıyla) (o tam-sayıyla) (birikim tam-sayı listesinin) asalları,
+  (bunla şunun eşitliği) doğruysa,
+    birikim,
+  değilse,
+    ((o'nun asallığı) doğruysa,
+      (bunla 1'in toplamıyla) şunla (onla 1'in toplamıyla)
+        (birikimle (onun boşa ekinin) birleşiminin) asallarıdır,
+    yanlışsa,
+      bunla şunla (onun 1'le toplamıyla) birikimin asallarıdır).
+
+(bu tam-sayının) asal-listesi,
+  (bunun 0'dan küçük-eşitliği) doğruysa,
+    boş,
+  değilse,
+    0'la bunla 2'yle boşun asallarıdır.
+
+(bu tam-sayı listesini) bastırmak,
+  bu boşsa,
+    durmaktır,
+  ilkin devama ekiyse,
+    ilki yazıp,
+    devamı bastırmaktır.
+
+çalıştırmak,
+  "Bir sayı girin:" yazıp,
+  isim olarak okuyup,
+  ((ismin tam-sayı-hali)
+    yokluksa,
+      "Geçersiz sayı." yazmaktır,
+    n'nin varlığıysa,
+      (n'nin asal-listesini) bastırmaktır).
+
+çalıştır.

@@ -41,6 +41,15 @@ body {
     linear-gradient(180deg, var(--bg2), var(--bg));
 }
 
+body.busy-cursor,
+body.busy-cursor * {
+  cursor: progress !important;
+}
+
+body.playground-fullscreen {
+  overflow: hidden;
+}
+
 /* Links */
 a {
   color: inherit;
@@ -66,8 +75,7 @@ code {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0.75rem 1.25rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
   gap: 1rem;
   align-items: center;
 }
@@ -76,6 +84,7 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -90,6 +99,8 @@ code {
   font-weight: 800;
   letter-spacing: -0.02em;
   font-size: 1.05rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .topbar-cta {
@@ -97,6 +108,8 @@ code {
   justify-content: flex-end;
   gap: 0.5rem;
   align-items: center;
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 .chip {
@@ -372,6 +385,28 @@ a.badge:hover {
   overflow: hidden;
 }
 
+.playground-shell.fullscreen {
+  position: fixed;
+  inset: 0.75rem;
+  z-index: 60;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(10, 12, 18, 0.96);
+}
+
+.playground-shell.fullscreen .playground-panels {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
+  resize: none;
+}
+
+.playground-shell.fullscreen .playground-codegen {
+  max-height: 35vh;
+  overflow: auto;
+}
+
 .playground-controls {
   display: flex;
   align-items: end;
@@ -395,11 +430,29 @@ a.badge:hover {
   gap: 0.45rem;
 }
 
-.playground-actions {
+.playground-actions-group {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.playground-actions {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+}
+
+.playground-actions .secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  color: var(--text);
+}
+
+.playground-actions .secondary:hover {
+  border-color: rgba(148, 163, 184, 0.45);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .btn-icon {
@@ -417,6 +470,10 @@ a.badge:hover {
   gap: 0;
   padding: 1rem;
   align-items: stretch;
+  height: clamp(320px, 55vh, 640px);
+  min-height: 320px;
+  resize: vertical;
+  overflow: hidden;
 }
 
 .playground-panels.resizing {
@@ -453,10 +510,10 @@ a.badge:hover {
   display: grid;
   gap: 0.5rem;
   grid-template-rows: auto 1fr;
+  min-height: 0;
 }
 
 .terminal {
-  min-height: 320px;
   height: 100%;
   padding: 0.85rem;
   border-radius: 12px;
@@ -465,6 +522,7 @@ a.badge:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-height: 0;
 }
 
 .terminal-body {
@@ -552,14 +610,13 @@ label {
 /* Editor with syntax highlighting overlay */
 .editor-wrap {
   position: relative;
-  min-height: 320px;
   height: 100%;
+  min-height: 0;
 }
 
 .editor-wrap textarea,
 .editor-wrap .editor-highlight {
   width: 100%;
-  min-height: 320px;
   height: 100%;
   padding: 0.85rem;
   border-radius: 12px;
@@ -575,7 +632,7 @@ label {
 
 .editor-wrap textarea {
   position: relative;
-  resize: vertical;
+  resize: none;
   border: 1px solid rgba(148, 163, 184, 0.22);
   background: transparent;
   color: white;
@@ -643,17 +700,30 @@ input[type="text"]::placeholder {
 
 button {
   padding: 0.6rem 1.05rem;
-  border: none;
+  border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 12px;
-  background: linear-gradient(90deg, rgba(32, 214, 199, 0.95), rgba(26, 99, 255, 0.95));
-  color: #061018;
+  background: rgba(15, 20, 30, 0.9);
+  color: rgba(226, 232, 240, 0.95);
   cursor: pointer;
   font-weight: 800;
   letter-spacing: -0.01em;
+  box-shadow: none;
+  transition: transform 0.08s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
 button:hover {
-  filter: brightness(1.02);
+  background: rgba(20, 26, 38, 0.98);
+}
+
+button:active,
+button.is-active {
+  transform: translateY(2px);
+  background: rgba(12, 16, 24, 0.98);
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+button.is-active:disabled {
+  opacity: 1;
 }
 
 button:disabled {
@@ -681,19 +751,26 @@ pre {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .footer-links {
   display: inline-flex;
   gap: 0.5rem;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .footer-left {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.footer-left > div {
+  min-width: 0;
 }
 
 .footer-logo {
@@ -710,6 +787,7 @@ pre {
 .footer-subtitle {
   color: rgba(226, 232, 240, 0.7);
   font-size: 0.92rem;
+  overflow-wrap: anywhere;
 }
 
 /* Make sure anchored sections are offset from the topbar */
@@ -746,15 +824,16 @@ pre {
     margin-left: 0;
   }
 
+  .playground-actions-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .feature-grid {
     grid-template-columns: 1fr;
   }
 
   .topbar-inner {
-    grid-template-columns: 1fr auto;
-  }
-
-  .topbar-cta {
-    display: none;
+    gap: 0.75rem;
   }
 }

@@ -1,15 +1,16 @@
 import { WASI, File, Directory, PreopenDirectory, ConsoleStdout, Fd } from "https://esm.sh/@bjorn3/browser_wasi_shim@0.4.2";
 
 // Library modules shipped into the in-memory WASI filesystem.
+// Keep this list aligned with `lib/` module layout in the repository.
 const libSources = [
   "giriş",
   "temel",
-  "temel-doğruluk",
-  "temel-dizge",
-  "temel-etki",
-  "temel-liste",
-  "temel-tam-sayı",
-  "temel-ondalık-sayı",
+  "temel/doğruluk",
+  "temel/dizge",
+  "temel/etki",
+  "temel/liste",
+  "temel/tam-sayı",
+  "temel/ondalık-sayı",
 ];
 const libFiles = [
   ...libSources.map((name) => `${name}.kip`),
@@ -154,8 +155,6 @@ let wasmModulePromise = null;
 let runtimeModePromise = null;
 // Optimization: dedupe preload work and share results across runs.
 let runtimePreloadPromise = null;
-// Optimization: singleton reactor instance state (created once, reused many times).
-let reactorStatePromise = null;
 
 const runtimeModes = {
   command: "command",
@@ -205,15 +204,10 @@ async function preloadRuntime() {
     // Optimization: warm heavy assets before first Run:
     // - compile wasm module
     // - fetch trmorph fst
-    // - eagerly initialize singleton reactor state when available
     await loadWasmModule();
-    const mode = await detectRuntimeMode();
     if (!libFileCache.has("trmorph.fst")) {
       const fst = await loadBinary("./assets/vendor/trmorph.fst");
       libFileCache.set("trmorph.fst", new File(fst, { readonly: true }));
-    }
-    if (mode === runtimeModes.reactor) {
-      await getReactorState();
     }
   })();
   return runtimePreloadPromise;
@@ -231,15 +225,47 @@ function extractModeAndLang(args) {
 }
 
 async function buildLibDirectoryContents() {
-  // Materialize immutable lib directory from cached files.
-  const libContents = new Map();
+  // Materialize immutable lib directory tree from cached files.
+  const root = new Map();
+
+  const ensureChildDir = (dirMap, name) => {
+    const existing = dirMap.get(name);
+    if (existing instanceof Map) {
+      return existing;
+    }
+    const next = new Map();
+    dirMap.set(name, next);
+    return next;
+  };
+
+  const insertPath = (relativePath, fileObj) => {
+    const parts = relativePath.split("/");
+    let dir = root;
+    for (let i = 0; i < parts.length - 1; i += 1) {
+      dir = ensureChildDir(dir, parts[i]);
+    }
+    dir.set(parts[parts.length - 1], fileObj);
+  };
+
+  const materialize = (dirMap) => {
+    const out = new Map();
+    for (const [name, value] of dirMap.entries()) {
+      if (value instanceof Map) {
+        out.set(name, new Directory(materialize(value)));
+      } else {
+        out.set(name, value);
+      }
+    }
+    return out;
+  };
+
   for (const file of libFiles) {
     const fileObj = await loadLibFile(file);
     if (fileObj) {
-      libContents.set(file, fileObj);
+      insertPath(file, fileObj);
     }
   }
-  return libContents;
+  return materialize(root);
 }
 
 async function buildVendorDirectoryContents() {
@@ -264,52 +290,44 @@ function createStderrSink() {
   return ConsoleStdout.lineBuffered((line) => postMessage({ type: "stderr", line }));
 }
 
-async function getReactorState() {
-  if (reactorStatePromise) {
-    // Optimization: keep one live instance + one in-memory FS for all runs.
-    return reactorStatePromise;
+async function createReactorState(source, signal, buffer) {
+  const libContents = await buildLibDirectoryContents();
+  const vendorContents = await buildVendorDirectoryContents();
+  const rootContents = new Map();
+  rootContents.set("lib", new Directory(libContents));
+  rootContents.set("vendor", new Directory(vendorContents));
+  rootContents.set("main.kip", new File(encoder.encode(source)));
+
+  const preopen = new PreopenDirectory("/", rootContents);
+  const stdinFile = new InteractiveStdin(signal, buffer);
+  const stdout = createStdoutSink();
+  const stderr = createStderrSink();
+  const wasi = new WASI(["kip-playground-reactor"], ["KIP_DATADIR=/"], [stdinFile, stdout, stderr, preopen]);
+
+  const module = await loadWasmModule();
+  const instance = await WebAssembly.instantiate(module, {
+    wasi_snapshot_preview1: wasi.wasiImport,
+  });
+
+  if (typeof wasi.initialize === "function") {
+    wasi.initialize(instance);
+  } else if (instance.exports && typeof instance.exports._initialize === "function") {
+    instance.exports._initialize();
   }
-  reactorStatePromise = (async () => {
-    const libContents = await buildLibDirectoryContents();
-    const vendorContents = await buildVendorDirectoryContents();
-    const rootContents = new Map();
-    rootContents.set("lib", new Directory(libContents));
-    rootContents.set("vendor", new Directory(vendorContents));
-    rootContents.set("main.kip", new File(encoder.encode("")));
-
-    const preopen = new PreopenDirectory("/", rootContents);
-    const stdinFile = new InteractiveStdin();
-    const stdout = createStdoutSink();
-    const stderr = createStderrSink();
-    const wasi = new WASI(["kip-playground-reactor"], ["KIP_DATADIR=/"], [stdinFile, stdout, stderr, preopen]);
-
-    const module = await loadWasmModule();
-    const instance = await WebAssembly.instantiate(module, {
-      wasi_snapshot_preview1: wasi.wasiImport,
-    });
-
-    // Optimization: initialize the reactor once; subsequent runs call `kip_run`.
-    if (typeof wasi.initialize === "function") {
-      wasi.initialize(instance);
-    } else if (instance.exports && typeof instance.exports._initialize === "function") {
-      instance.exports._initialize();
+  // Reactor builds with `-no-hs-main` require explicit RTS initialization.
+  // Without this, `kip_run` fails with:
+  //   "RTS is not initialised; call hs_init() first"
+  if (instance.exports && typeof instance.exports.hs_init === "function") {
+    try {
+      // Common ABI shape for hs_init(argcPtr, argvPtr).
+      instance.exports.hs_init(0, 0);
+    } catch (err) {
+      // Some toolchains expose a zero-arg wrapper; keep compatibility.
+      instance.exports.hs_init();
     }
-    // Reactor builds with `-no-hs-main` require explicit RTS initialization.
-    // Without this, `kip_run` fails with:
-    //   "RTS is not initialised; call hs_init() first"
-    if (instance.exports && typeof instance.exports.hs_init === "function") {
-      try {
-        // Common ABI shape for hs_init(argcPtr, argvPtr).
-        instance.exports.hs_init(0, 0);
-      } catch (err) {
-        // Some toolchains expose a zero-arg wrapper; keep compatibility.
-        instance.exports.hs_init();
-      }
-    }
+  }
 
-    return { rootContents, stdinFile, instance };
-  })();
-  return reactorStatePromise;
+  return { instance };
 }
 
 async function runWasmCommand({ args, source, signal, buffer }) {
@@ -343,13 +361,8 @@ async function runWasmCommand({ args, source, signal, buffer }) {
 }
 
 async function runWasmReactor({ args, source, signal, buffer }) {
-  // Reactor mode optimization:
-  // - same wasm instance
-  // - same in-memory FS tree
-  // - replace only /main.kip and stdin buffers per invocation
-  const reactorState = await getReactorState();
-  reactorState.rootContents.set("main.kip", new File(encoder.encode(source)));
-  reactorState.stdinFile.setBuffers(signal, buffer);
+  // Keep the worker long-lived, but create a fresh reactor state per run.
+  const reactorState = await createReactorState(source, signal, buffer);
 
   const exportRun = reactorState.instance.exports && reactorState.instance.exports.kip_run;
   if (typeof exportRun !== "function") {

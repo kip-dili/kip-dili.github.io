@@ -1,42 +1,79 @@
 temeli yükle.
 
 (* Liste fonksiyonları. *)
+
+(*
+Bir listenin uzunluğunu (öğe sayısını) hesaplar.
+Boş liste için 0, dolu liste için her adımda 1 artırarak ilerler.
+Örnek kullanım: ((1'in (2'nin boşa ekine) ekinin) uzunluğu)
+*)
 (bu öğe listesinin) (uzunluk tam-sayısı),
   bu boşsa,
     0;
   ilkin devama ekiyse,
     (devamın uzunluğuyla) 1'in toplamıdır.
 
+(*
+İki listeyi birleştirir.
+Soldaki listenin sırası korunur; sağdaki liste onun sonuna eklenir.
+Örnek kullanım: ((1'in boşa ekinin) (2'nin boşa ekinin birleşimi))
+*)
 (bu öğe listesiyle) (şu öğe listesinin) (birleşim öğe listesi),
   bu boşsa,
     şu;
   ilkin devama ekiyse,
     ilkin (devamla şunun birleşimine) ekidir.
 
+(*
+Bir listenin tersini döndürür.
+Öğelerin sırası baştan sona değil, sondan başa olacak şekilde çevrilir.
+Örnek kullanım: ((1'in (2'nin boşa ekine) ekinin tersi))
+*)
 (bu öğe listesinin) (ters öğe listesi),
   bu boşsa,
     boş;
   ilkin devama ekiyse,
     (devamın tersiyle) (ilkin boşa ekinin) birleşimidir.
 
+(*
+Tam-sayı listesindeki tüm öğeleri toplar.
+Boş listede birim değer olarak 0 döner.
+Örnek kullanım: ((1'in (2'nin boşa ekine) ekinin toplamı)
+*)
 (bu tam-sayı listesinin) (toplam tam-sayısı),
   bu boşsa,
     0;
   ilkin devama ekiyse,
     ilkin (devamın toplamıyla) toplamıdır.
 
+(*
+Verilen işlevi listedeki her öğeye uygular ve yeni bir liste üretir.
+Girdi listesinin uzunluğu korunur; sadece öğe tipi dönüşebilir (a -> b).
+Örnek kullanım: ((1'in (2'nin boşa ekine) ekini) (artırım işleviyle) eşlem)
+*)
 (bu a listesinin) (iş a'nın b'siyle) (eşlem b listesi),
   bu boşsa, boş;
   ilkin devama ekiyse, (ilkin işinin) (devamın işle eşlemine) ekidir.
 
+(*
+Verilen testten geçen öğeleri tutup diğerlerini eler.
+Sıra korunur; yalnızca koşulu sağlayanlar sonuç listesinde kalır.
+Örnek kullanım: ((1'in (2'nin boşa ekine) ekini) (çift-mi testiyle) filtre)
+*)
 (bu a listesinin) (test a'nın doğruluğuyla) (filtre a listesi),
   bu boşsa, boş;
-  ilkin devama ekiyse, 
+  ilkin devama ekiyse,
     (ilkin testi) doğruysa,
       ilkin (devamın testle filtresine) ekidir;
     değilse,
       devamın testle filtresidir.
 
+(*
+Listenin başından en fazla n öğe alır.
+- n <= 0 ise boş liste döner.
+- n, uzunluktan büyükse listenin tamamı döner.
+Örnek kullanım: ((1'in (2'nin (3'ün boşa ekine) ekine) ekinden) 2 alış)
+*)
 (bu a listesinden) (n tam-sayı) (alış a listesi),
   bu boşsa, boş;
   ilkin devama ekiyse,
@@ -45,6 +82,12 @@ temeli yükle.
     değilse,
       ilkin (devamdan (n'in eksilimi) alışına) ekidir.
 
+(*
+Listenin başından n öğeyi atıp kalan kısmı döndürür.
+- n <= 0 ise listeyi olduğu gibi verir.
+- n, uzunluktan büyükse boş liste döner.
+Örnek kullanım: ((1'in (2'nin (3'ün boşa ekine) ekine) ekinden) 1 bırakış)
+*)
 (bu a listesinden) (n tam-sayı) (bırakış a listesi),
   bu boşsa, boş;
   ilkin devama ekiyse,
@@ -53,12 +96,22 @@ temeli yükle.
     değilse,
       devamdan (n'in eksilimi) bırakışıdır.
 
+(*
+Başlangıç ve son değerlerinden bir tam-sayı aralığı üretir.
+Bu tanım artan aralık içindir ve son değeri de içerir.
+Örnek kullanım: (1'den 5'e aralık)
+*)
 (başlangıç tam-sayıdan) (son tam-sayıya) (aralık tam-sayı listesi),
   (başlangıcın sonla eşitliği) doğruysa,
     başlangıcın boşa ekidir;
   değilse,
     başlangıcın ((başlangıcın artırımından) sona aralığına) ekidir.
 
+(*
+Listedeki tüm öğeler testten geçiyorsa doğru döndürür.
+Boş liste için mantıksal birim gereği doğru döner.
+Örnek kullanım: ((2'nin (4'ün boşa ekine) ekinin) (çift-mi testiyle) hepsi)
+*)
 (bu a listesinin) (test a'nın doğruluğuyla) (hepsi doğruluğu),
   bu boşsa, doğru;
   ilkin devama ekiyse,
@@ -67,6 +120,11 @@ temeli yükle.
     değilse,
       yanlıştır.
 
+(*
+Listedeki en az bir öğe testten geçiyorsa doğru döndürür.
+Boş liste için yanlış döner.
+Örnek kullanım: ((1'in (4'ün boşa ekine) ekinin) (çift-mi testiyle) herhangi)
+*)
 (bu a listesinin) (test a'nın doğruluğuyla) (herhangi doğruluğu),
   bu boşsa, yanlış;
   ilkin devama ekiyse,

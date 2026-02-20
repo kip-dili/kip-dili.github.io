@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kip Standard Library: lib/giriş.kip</title>
-    <link rel="icon" type="image/png" href="../logo.png" />
-    <link rel="stylesheet" href="../style.css" />
+    <title>Kip Standard Library: lib/temel/etki.kip</title>
+    <link rel="icon" type="image/png" href="../../../logo.png" />
+    <link rel="stylesheet" href="../../../style.css" />
     <style>
       body { background: linear-gradient(180deg, var(--bg2), var(--bg)); }
       .lib-main { padding: 2rem 1.25rem; }
@@ -18,11 +18,11 @@
       .lib-list a:hover { color: var(--accent1); }
     </style>
   </head>
-  <body data-page-kind="libs-file" data-lib-path="lib/giriş.kip">
+  <body data-page-kind="libs-file" data-lib-path="lib/temel/etki.kip">
     <header class="topbar">
       <div class="topbar-inner">
-        <a class="brand" href="../index.html">
-          <img class="brand-logo" src="../logo.png" alt="Kip logo" />
+        <a class="brand" href="../../../index.html">
+          <img class="brand-logo" src="../../../logo.png" alt="Kip logo" />
           <span class="brand-name">Kip</span>
         </a>
 
@@ -60,7 +60,7 @@
 
     <main id="top" class="lib-main">
       <div class="lib-main-inner">
-        <h1 class="lib-title">lib/giriş.kip</h1>
+        <h1 class="lib-title">lib/temel/etki.kip</h1>
         <div class="lib-code">
           <pre id="lib-source"></pre>
         </div>
@@ -70,7 +70,7 @@
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-left">
-          <img class="footer-logo" src="../logo.png" alt="Kip logo" />
+          <img class="footer-logo" src="../../../logo.png" alt="Kip logo" />
           <div>
             <div class="footer-title">Kip</div>
             <div class="footer-subtitle" data-i18n="footer.subtitle">A programming language in Turkish where grammatical case and mood are part of the type system.</div>
@@ -96,8 +96,8 @@
       </div>
     </footer>
     <script type="module">
-      import { highlightKeywords } from "../kip-syntax.js";
-      const b64 = "dGVtZWxpIHnDvGtsZS4KCnRlbWVsLWRvxJ9ydWx1xJ91IHnDvGtsZS4KdGVtZWwtdGFtLXNhecSxecSxIHnDvGtsZS4KdGVtZWwtb25kYWzEsWstc2F5xLF5xLEgecO8a2xlLgp0ZW1lbC1kaXpnZXlpIHnDvGtsZS4KdGVtZWwtbGlzdGV5aSB5w7xrbGUuCnRlbWVsLWV0a2l5aSB5w7xrbGUuCg==";
+      import { highlightKeywords } from "../../../kip-syntax.js";
+      const b64 = "dGVtZWxpIHnDvGtsZS4KCigqCkV0a2lsaSBha8SxxZ/EsSBzb25sYW5kxLFybWFrIHZleWEgImhpw6diaXIgxZ9leSB5YXBtYW1hayIgacOnaW4ga3VsbGFuxLFsYW4gdGVtZWwgYml0aW0gZGXEn2VyaWRpci4KU8SxcmFsxLEgZXRraWxlcmRlIHNvbiBhZMSxbSBvbGFyYWsgc8SxayBrdWxsYW7EsWzEsXIuCsOWcm5layBrdWxsYW7EsW06IGR1cm1hawoqKQooZHVybWFrIGJpdGltaSksCiAgYml0aW1saWt0aXIuCgooKiBFdGtpbGkgKHlhbiBldGtpIMO8cmV0ZW4pIGZvbmtzaXlvbmxhci4gKikKCigqClZlcmlsZW4gdGFtLXNhecSxecSxIHN0YW5kYXJ0IMOnxLFrdMSxeWEgeWF6YXIuCkTDtm7DvMWfdGUgYml0aW0gdmVyaXI7IHlhbmkgYXPEsWwgYW1hY8SxIHlhem1hIGV0a2lzaWRpci4Kw5ZybmVrIGt1bGxhbsSxbTogNSdpIHlhem1hawoqKQooYnUgdGFtLXNhecSxecSxKSAoeWF6bWFrIGJpdGltaSksCiAgeWVybGXFn2lrdGlyLgoKKCoKVmVyaWxlbiBvbmRhbMSxay1zYXnEsXnEsSBzdGFuZGFydCDDp8Sxa3TEsXlhIHlhemFyLgpTYXnEsXNhbCBkZcSfZXJpIG1ldG5lIMOnZXZpcmlwIGt1bGxhbsSxY8SxeWEgZ8O2c3RlcmlyLgrDlnJuZWsga3VsbGFuxLFtOiAzLjE0J8O8IHlhem1hawoqKQooYnUgb25kYWzEsWstc2F5xLF5xLEpICh5YXptYWsgYml0aW1pKSwKICB5ZXJsZcWfaWt0aXIuCgooKgpWZXJpbGVuIGRpemdleWkgc3RhbmRhcnQgw6fEsWt0xLF5YSB5YXphci4KS3VsbGFuxLFjxLF5YSBtZXNhaiBnw7ZzdGVybWVrIGnDp2luIGVuIHRlbWVsIHlhem1hIGnFn2xlbWRpci4Kw5ZybmVrIGt1bGxhbsSxbTogIm1lcmhhYmEiecSxIHlhem1hawoqKQooYnUgZGl6Z2V5aSkgKHlhem1hayBiaXRpbWkpLAogIHllcmxlxZ9pa3Rpci4KCigqClN0YW5kYXJ0IGdpcmRpZGVuIGJpciBzYXTEsXIgb2t1ciB2ZSBkaXpnZSBkw7ZuZMO8csO8ci4KRXRraWxpIGJhxJ9sYW1kYSBnZW5lbGxpa2xlICJva3V5dXAiIHlhcMSxc8SxeWxhIGt1bGxhbsSxbMSxci4Kw5ZybmVrIGt1bGxhbsSxbTogb2t1eXVwCiopCihva3VtYWsgZGl6Z2VzaSksCiAgeWVybGXFn2lrdGlyLgoKKCoKQmVsaXJ0aWxlbiBkb3N5YSB5b2x1bmRhbiBtZXRpbiBva3VtYXnEsSBkZW5lci4KLSBPa3VtYSBiYcWfYXLEsWzEsXlzYSBkaXpnZSB2YXJsxLHEn8SxIGTDtm5lci4KLSBEb3N5YSB5b2tzYSB2ZXlhIG9rdW5hbcSxeW9yc2EgeW9rbHVrIGTDtm5lci4Kw5ZybmVrIGt1bGxhbsSxbTogIi4vbm90bGFyLnR4dCJkZW4gb2t1bWFrCiopCihkb3N5YSBkaXpnZXNpbmRlbikgKG9rdW1hayBkaXpnZSBvbGFzxLFsxLHEn8SxKSwKICB5ZXJsZcWfaWt0aXIuCgooKgpWZXJpbGVuIGRpemdleWkgYmVsaXJ0aWxlbiBkb3N5YSB5b2x1bmEgeWF6bWF5xLEgZGVuZXIuCsSwxZ9sZW0gc29udWN1IGRvxJ9ydWx1ayBkw7ZuZMO8csO8cjoKLSBkb8SfcnU6IHlhem1hIGJhxZ9hcsSxbMSxCi0geWFubMSxxZ86IHlhem1hIGJhxZ9hcsSxc8SxegrDlnJuZWsga3VsbGFuxLFtOiAiLi9ub3RsYXIudHh0InllICJzZWxhbSLEsSB5YXptYWsKKikKKGRvc3lhIGRpemdlc2luZSkgKMWfdSBkaXpnZXlpKSAoeWF6bWFrIGRvxJ9ydWx1xJ91KSwKICB5ZXJsZcWfaWt0aXIuCgooKgpCYcWfbGFuZ8Sxw6cgdmUgYml0acWfIGRlxJ9lcmxlcmluaSBrYXBzYXlhbiBhcmFsxLFrdGEgcmFzdGdlbGUgYmlyIHRhbS1zYXnEsSDDvHJldGlyLgrDlnJuZWsga3VsbGFuxLFtOiAxJ2RlbiAxMCdhIHNhecSxLcOnZWttZWsKKikKKGJ1IHRhbS1zYXnEsWRhbikgKMWfdSB0YW0tc2F5xLF5YSkgKHNhecSxLcOnZWttZWsgdGFtLXNhecSxc8SxKSwKICB5ZXJsZcWfaWt0aXIuCg==";
       const bytes = Uint8Array.from(atob(b64), (ch) => ch.charCodeAt(0));
       const source = new TextDecoder().decode(bytes);
       document.getElementById("lib-source").innerHTML = highlightKeywords(source);

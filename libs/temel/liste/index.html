@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kip Standard Library: lib/temel.kip</title>
-    <link rel="icon" type="image/png" href="../logo.png" />
-    <link rel="stylesheet" href="../style.css" />
+    <title>Kip Standard Library: lib/temel/liste.kip</title>
+    <link rel="icon" type="image/png" href="../../../logo.png" />
+    <link rel="stylesheet" href="../../../style.css" />
     <style>
       body { background: linear-gradient(180deg, var(--bg2), var(--bg)); }
       .lib-main { padding: 2rem 1.25rem; }
@@ -18,11 +18,11 @@
       .lib-list a:hover { color: var(--accent1); }
     </style>
   </head>
-  <body data-page-kind="libs-file" data-lib-path="lib/temel.kip">
+  <body data-page-kind="libs-file" data-lib-path="lib/temel/liste.kip">
     <header class="topbar">
       <div class="topbar-inner">
-        <a class="brand" href="../index.html">
-          <img class="brand-logo" src="../logo.png" alt="Kip logo" />
+        <a class="brand" href="../../../index.html">
+          <img class="brand-logo" src="../../../logo.png" alt="Kip logo" />
           <span class="brand-name">Kip</span>
         </a>
 
@@ -60,7 +60,7 @@
 
     <main id="top" class="lib-main">
       <div class="lib-main-inner">
-        <h1 class="lib-title">lib/temel.kip</h1>
+        <h1 class="lib-title">lib/temel/liste.kip</h1>
         <div class="lib-code">
           <pre id="lib-source"></pre>
         </div>
@@ -70,7 +70,7 @@
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-left">
-          <img class="footer-logo" src="../logo.png" alt="Kip logo" />
+          <img class="footer-logo" src="../../../logo.png" alt="Kip logo" />
           <div>
             <div class="footer-title">Kip</div>
             <div class="footer-subtitle" data-i18n="footer.subtitle">A programming language in Turkish where grammatical case and mood are part of the type system.</div>
@@ -96,8 +96,8 @@
       </div>
     </footer>
     <script type="module">
-      import { highlightKeywords } from "../kip-syntax.js";
-      const b64 = "KCogWWFwa8Sxc8SxIG9sbWF5YW4gdGlwIHRhbsSxbcSxLiBIYXNrZWxsJ2Rla2kgVm9pZCBnaWJpLiAqKQpCaXIgYm/Fn2x1ayB2YXIgb2xhbWF6LgoKQmlyIGJpdGltIHlhIGJpdGltbGlrIG9sYWJpbGlyLgoKKCogRG/En3J1bHVrLCB5YW5pIEJvb2xlYW4gdGlwaS4gKikKQmlyIGRvxJ9ydWx1ayB5YSBkb8SfcnUgeWEgZGEgeWFubMSxxZ8gb2xhYmlsaXIuCgooKiDDh29rYmnDp2ltbGkgb2xhc8SxbMSxayB0aXBpLiBIYXNrZWxsJ2Rla2kgTWF5YmUgZ2liaS4gKikKQmlyIMO2xJ9lbmluIG9sYXPEsWzEscSfxLEKeWEgeW9rbHVrCnlhIGRhIGJpciDDtsSfZW5pbiB2YXJsxLHEn8SxIG9sYWJpbGlyLgoKKCogw4dva2Jpw6dpbWxpIGJhxJ9sxLEgbGlzdGUgKHBvbHltb3JwaGljIGxpbmtlZCBsaXN0KS4gKikKQmlyIMO2xJ9lIGxpc3Rlc2kKeWEgYm/Fnwp5YSBkYSBiaXIgw7bEn2VuaW4gYmlyIMO2xJ9lIGxpc3Rlc2luZSBla2kKb2xhYmlsaXIuCgooKiDDh29rYmnDp2ltbGkgaWtpbGkgw6dpZnRpIHRpcGkuIEhhc2tlbGwnZGVraSAoLCkgZ2liaS4gKikKQmlyIGEneWxhIGIgw6dpZnRpCnlhIGJpciBhJ3lsYSBiaXIgYiBpa2lsaXNpCm9sYWJpbGlyLgoKKCogw4dva2Jpw6dpbWxpIGlraWxpIHRvcGxhbSB0aXBpLiBIYXNrZWxsJ2Rla2kgRWl0aGVyIGdpYmkuICopCkJpciBhJ3lsYSBiJ25pbiBzb251Y3UKeWEgYmlyIGEneWxhIGhhdGEKeWEgZGEgYmlyIGIneWxlIGJhxZ9hcsSxCm9sYWJpbGlyLgoKKCogWWVybGXFn2lrIChwcmltaXRpdmUpIHRpcGxlci4gKikKQmlyIHllcmxlxZ9payB0YW0tc2F5xLEgb2xzdW4uCkJpciB5ZXJsZcWfaWsgb25kYWzEsWstc2F5xLEgb2xzdW4uCkJpciB5ZXJsZcWfaWsgZGl6Z2Ugb2xzdW4uCg==";
+      import { highlightKeywords } from "../../../kip-syntax.js";
+      const b64 = "dGVtZWxpIHnDvGtsZS4KCigqIExpc3RlIGZvbmtzaXlvbmxhcsSxLiAqKQoKKCoKQmlyIGxpc3RlbmluIHV6dW5sdcSfdW51ICjDtsSfZSBzYXnEsXPEsW7EsSkgaGVzYXBsYXIuCkJvxZ8gbGlzdGUgacOnaW4gMCwgZG9sdSBsaXN0ZSBpw6dpbiBoZXIgYWTEsW1kYSAxIGFydMSxcmFyYWsgaWxlcmxlci4Kw5ZybmVrIGt1bGxhbsSxbTogKCgxJ2luICgyJ25pbiBib8WfYSBla2luZSkgZWtpbmluKSB1enVubHXEn3UpCiopCihidSDDtsSfZSBsaXN0ZXNpbmluKSAodXp1bmx1ayB0YW0tc2F5xLFzxLEpLAogIGJ1IGJvxZ9zYSwKICAgIDA7CiAgaWxraW4gZGV2YW1hIGVraXlzZSwKICAgIChkZXZhbcSxbiB1enVubHXEn3V5bGEpIDEnaW4gdG9wbGFtxLFkxLFyLgoKKCoKxLBraSBsaXN0ZXlpIGJpcmxlxZ90aXJpci4KU29sZGFraSBsaXN0ZW5pbiBzxLFyYXPEsSBrb3J1bnVyOyBzYcSfZGFraSBsaXN0ZSBvbnVuIHNvbnVuYSBla2xlbmlyLgrDlnJuZWsga3VsbGFuxLFtOiAoKDEnaW4gYm/Fn2EgZWtpbmluKSAoMiduaW4gYm/Fn2EgZWtpbmluIGJpcmxlxZ9pbWkpKQoqKQooYnUgw7bEn2UgbGlzdGVzaXlsZSkgKMWfdSDDtsSfZSBsaXN0ZXNpbmluKSAoYmlybGXFn2ltIMO2xJ9lIGxpc3Rlc2kpLAogIGJ1IGJvxZ9zYSwKICAgIMWfdTsKICBpbGtpbiBkZXZhbWEgZWtpeXNlLAogICAgaWxraW4gKGRldmFtbGEgxZ91bnVuIGJpcmxlxZ9pbWluZSkgZWtpZGlyLgoKKCoKQmlyIGxpc3RlbmluIHRlcnNpbmkgZMO2bmTDvHLDvHIuCsOWxJ9lbGVyaW4gc8SxcmFzxLEgYmHFn3RhbiBzb25hIGRlxJ9pbCwgc29uZGFuIGJhxZ9hIG9sYWNhayDFn2VraWxkZSDDp2V2cmlsaXIuCsOWcm5layBrdWxsYW7EsW06ICgoMSdpbiAoMiduaW4gYm/Fn2EgZWtpbmUpIGVraW5pbiB0ZXJzaSkpCiopCihidSDDtsSfZSBsaXN0ZXNpbmluKSAodGVycyDDtsSfZSBsaXN0ZXNpKSwKICBidSBib8Wfc2EsCiAgICBib8WfOwogIGlsa2luIGRldmFtYSBla2l5c2UsCiAgICAoZGV2YW3EsW4gdGVyc2l5bGUpIChpbGtpbiBib8WfYSBla2luaW4pIGJpcmxlxZ9pbWlkaXIuCgooKgpUYW0tc2F5xLEgbGlzdGVzaW5kZWtpIHTDvG0gw7bEn2VsZXJpIHRvcGxhci4KQm/FnyBsaXN0ZWRlIGJpcmltIGRlxJ9lciBvbGFyYWsgMCBkw7ZuZXIuCsOWcm5layBrdWxsYW7EsW06ICgoMSdpbiAoMiduaW4gYm/Fn2EgZWtpbmUpIGVraW5pbiB0b3BsYW3EsSkKKikKKGJ1IHRhbS1zYXnEsSBsaXN0ZXNpbmluKSAodG9wbGFtIHRhbS1zYXnEsXPEsSksCiAgYnUgYm/Fn3NhLAogICAgMDsKICBpbGtpbiBkZXZhbWEgZWtpeXNlLAogICAgaWxraW4gKGRldmFtxLFuIHRvcGxhbcSxeWxhKSB0b3BsYW3EsWTEsXIuCgooKgpWZXJpbGVuIGnFn2xldmkgbGlzdGVkZWtpIGhlciDDtsSfZXllIHV5Z3VsYXIgdmUgeWVuaSBiaXIgbGlzdGUgw7xyZXRpci4KR2lyZGkgbGlzdGVzaW5pbiB1enVubHXEn3Uga29ydW51cjsgc2FkZWNlIMO2xJ9lIHRpcGkgZMO2bsO8xZ9lYmlsaXIgKGEgLT4gYikuCsOWcm5layBrdWxsYW7EsW06ICgoMSdpbiAoMiduaW4gYm/Fn2EgZWtpbmUpIGVraW5pKSAoYXJ0xLFyxLFtIGnFn2xldml5bGUpIGXFn2xlbSkKKikKKGJ1IGEgbGlzdGVzaW5pbikgKGnFnyBhJ27EsW4gYidzaXlsZSkgKGXFn2xlbSBiIGxpc3Rlc2kpLAogIGJ1IGJvxZ9zYSwgYm/FnzsKICBpbGtpbiBkZXZhbWEgZWtpeXNlLCAoaWxraW4gacWfaW5pbikgKGRldmFtxLFuIGnFn2xlIGXFn2xlbWluZSkgZWtpZGlyLgoKKCoKVmVyaWxlbiB0ZXN0dGVuIGdlw6dlbiDDtsSfZWxlcmkgdHV0dXAgZGnEn2VybGVyaW5pIGVsZXIuClPEsXJhIGtvcnVudXI7IHlhbG7EsXpjYSBrb8WfdWx1IHNhxJ9sYXlhbmxhciBzb251w6cgbGlzdGVzaW5kZSBrYWzEsXIuCsOWcm5layBrdWxsYW7EsW06ICgoMSdpbiAoMiduaW4gYm/Fn2EgZWtpbmUpIGVraW5pKSAow6dpZnQtbWkgdGVzdGl5bGUpIGZpbHRyZSkKKikKKGJ1IGEgbGlzdGVzaW5pbikgKHRlc3QgYSduxLFuIGRvxJ9ydWx1xJ91eWxhKSAoZmlsdHJlIGEgbGlzdGVzaSksCiAgYnUgYm/Fn3NhLCBib8WfOwogIGlsa2luIGRldmFtYSBla2l5c2UsCiAgICAoaWxraW4gdGVzdGkpIGRvxJ9ydXlzYSwKICAgICAgaWxraW4gKGRldmFtxLFuIHRlc3RsZSBmaWx0cmVzaW5lKSBla2lkaXI7CiAgICBkZcSfaWxzZSwKICAgICAgZGV2YW3EsW4gdGVzdGxlIGZpbHRyZXNpZGlyLgoKKCoKTGlzdGVuaW4gYmHFn8SxbmRhbiBlbiBmYXpsYSBuIMO2xJ9lIGFsxLFyLgotIG4gPD0gMCBpc2UgYm/FnyBsaXN0ZSBkw7ZuZXIuCi0gbiwgdXp1bmx1a3RhbiBiw7x5w7xrc2UgbGlzdGVuaW4gdGFtYW3EsSBkw7ZuZXIuCsOWcm5layBrdWxsYW7EsW06ICgoMSdpbiAoMiduaW4gKDMnw7xuIGJvxZ9hIGVraW5lKSBla2luZSkgZWtpbmRlbikgMiBhbMSxxZ8pCiopCihidSBhIGxpc3Rlc2luZGVuKSAobiB0YW0tc2F5xLEpIChhbMSxxZ8gYSBsaXN0ZXNpKSwKICBidSBib8Wfc2EsIGJvxZ87CiAgaWxraW4gZGV2YW1hIGVraXlzZSwKICAgIChuJ2luIDAnbGEgZcWfaXRsacSfaSkgZG/En3J1eXNhLAogICAgICBib8WfOwogICAgZGXEn2lsc2UsCiAgICAgIGlsa2luIChkZXZhbWRhbiAobidpbiBla3NpbGltaSkgYWzEscWfxLFuYSkgZWtpZGlyLgoKKCoKTGlzdGVuaW4gYmHFn8SxbmRhbiBuIMO2xJ9leWkgYXTEsXAga2FsYW4ga8Sxc23EsSBkw7ZuZMO8csO8ci4KLSBuIDw9IDAgaXNlIGxpc3RleWkgb2xkdcSfdSBnaWJpIHZlcmlyLgotIG4sIHV6dW5sdWt0YW4gYsO8ecO8a3NlIGJvxZ8gbGlzdGUgZMO2bmVyLgrDlnJuZWsga3VsbGFuxLFtOiAoKDEnaW4gKDInbmluICgzJ8O8biBib8WfYSBla2luZSkgZWtpbmUpIGVraW5kZW4pIDEgYsSxcmFrxLHFnykKKikKKGJ1IGEgbGlzdGVzaW5kZW4pIChuIHRhbS1zYXnEsSkgKGLEsXJha8SxxZ8gYSBsaXN0ZXNpKSwKICBidSBib8Wfc2EsIGJvxZ87CiAgaWxraW4gZGV2YW1hIGVraXlzZSwKICAgIChuJ2luIDAnbGEgZcWfaXRsacSfaSkgZG/En3J1eXNhLAogICAgICBidTsKICAgIGRlxJ9pbHNlLAogICAgICBkZXZhbWRhbiAobidpbiBla3NpbGltaSkgYsSxcmFrxLHFn8SxZMSxci4KCigqCkJhxZ9sYW5nxLHDpyB2ZSBzb24gZGXEn2VybGVyaW5kZW4gYmlyIHRhbS1zYXnEsSBhcmFsxLHEn8SxIMO8cmV0aXIuCkJ1IHRhbsSxbSBhcnRhbiBhcmFsxLFrIGnDp2luZGlyIHZlIHNvbiBkZcSfZXJpIGRlIGnDp2VyaXIuCsOWcm5layBrdWxsYW7EsW06ICgxJ2RlbiA1J2UgYXJhbMSxaykKKikKKGJhxZ9sYW5nxLHDpyB0YW0tc2F5xLFkYW4pIChzb24gdGFtLXNhecSxeWEpIChhcmFsxLFrIHRhbS1zYXnEsSBsaXN0ZXNpKSwKICAoYmHFn2xhbmfEsWPEsW4gc29ubGEgZcWfaXRsacSfaSkgZG/En3J1eXNhLAogICAgYmHFn2xhbmfEsWPEsW4gYm/Fn2EgZWtpZGlyOwogIGRlxJ9pbHNlLAogICAgYmHFn2xhbmfEsWPEsW4gKChiYcWfbGFuZ8SxY8SxbiBhcnTEsXLEsW3EsW5kYW4pIHNvbmEgYXJhbMSxxJ/EsW5hKSBla2lkaXIuCgooKgpMaXN0ZWRla2kgdMO8bSDDtsSfZWxlciB0ZXN0dGVuIGdlw6dpeW9yc2EgZG/En3J1IGTDtm5kw7xyw7xyLgpCb8WfIGxpc3RlIGnDp2luIG1hbnTEsWtzYWwgYmlyaW0gZ2VyZcSfaSBkb8SfcnUgZMO2bmVyLgrDlnJuZWsga3VsbGFuxLFtOiAoKDInbmluICg0J8O8biBib8WfYSBla2luZSkgZWtpbmluKSAow6dpZnQtbWkgdGVzdGl5bGUpIGhlcHNpKQoqKQooYnUgYSBsaXN0ZXNpbmluKSAodGVzdCBhJ27EsW4gZG/En3J1bHXEn3V5bGEpIChoZXBzaSBkb8SfcnVsdcSfdSksCiAgYnUgYm/Fn3NhLCBkb8SfcnU7CiAgaWxraW4gZGV2YW1hIGVraXlzZSwKICAgIChpbGtpbiB0ZXN0aSkgZG/En3J1eXNhLAogICAgICBkZXZhbcSxbiB0ZXN0bGUgaGVwc2lzaTsKICAgIGRlxJ9pbHNlLAogICAgICB5YW5sxLHFn3TEsXIuCgooKgpMaXN0ZWRla2kgZW4gYXogYmlyIMO2xJ9lIHRlc3R0ZW4gZ2XDp2l5b3JzYSBkb8SfcnUgZMO2bmTDvHLDvHIuCkJvxZ8gbGlzdGUgacOnaW4geWFubMSxxZ8gZMO2bmVyLgrDlnJuZWsga3VsbGFuxLFtOiAoKDEnaW4gKDQnw7xuIGJvxZ9hIGVraW5lKSBla2luaW4pICjDp2lmdC1taSB0ZXN0aXlsZSkgaGVyaGFuZ2kpCiopCihidSBhIGxpc3Rlc2luaW4pICh0ZXN0IGEnbsSxbiBkb8SfcnVsdcSfdXlsYSkgKGhlcmhhbmdpIGRvxJ9ydWx1xJ91KSwKICBidSBib8Wfc2EsIHlhbmzEscWfOwogIGlsa2luIGRldmFtYSBla2l5c2UsCiAgICAoaWxraW4gdGVzdGkpIGRvxJ9ydXlzYSwKICAgICAgZG/En3J1OwogICAgZGXEn2lsc2UsCiAgICAgIGRldmFtxLFuIHRlc3RsZSBoZXJoYW5naXNpZGlyLgo=";
       const bytes = Uint8Array.from(atob(b64), (ch) => ch.charCodeAt(0));
       const source = new TextDecoder().decode(bytes);
       document.getElementById("lib-source").innerHTML = highlightKeywords(source);

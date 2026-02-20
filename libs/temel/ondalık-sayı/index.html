@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kip Standard Library: lib/temel/doğruluk.kip</title>
-    <link rel="icon" type="image/png" href="../../logo.png" />
-    <link rel="stylesheet" href="../../style.css" />
+    <title>Kip Standard Library: lib/temel/ondalık-sayı.kip</title>
+    <link rel="icon" type="image/png" href="../../../logo.png" />
+    <link rel="stylesheet" href="../../../style.css" />
     <style>
       body { background: linear-gradient(180deg, var(--bg2), var(--bg)); }
       .lib-main { padding: 2rem 1.25rem; }
@@ -18,11 +18,11 @@
       .lib-list a:hover { color: var(--accent1); }
     </style>
   </head>
-  <body data-page-kind="libs-file" data-lib-path="lib/temel/doğruluk.kip">
+  <body data-page-kind="libs-file" data-lib-path="lib/temel/ondalık-sayı.kip">
     <header class="topbar">
       <div class="topbar-inner">
-        <a class="brand" href="../../index.html">
-          <img class="brand-logo" src="../../logo.png" alt="Kip logo" />
+        <a class="brand" href="../../../index.html">
+          <img class="brand-logo" src="../../../logo.png" alt="Kip logo" />
           <span class="brand-name">Kip</span>
         </a>
 
@@ -60,7 +60,7 @@
 
     <main id="top" class="lib-main">
       <div class="lib-main-inner">
-        <h1 class="lib-title">lib/temel/doğruluk.kip</h1>
+        <h1 class="lib-title">lib/temel/ondalık-sayı.kip</h1>
         <div class="lib-code">
           <pre id="lib-source"></pre>
         </div>
@@ -70,7 +70,7 @@
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-left">
-          <img class="footer-logo" src="../../logo.png" alt="Kip logo" />
+          <img class="footer-logo" src="../../../logo.png" alt="Kip logo" />
           <div>
             <div class="footer-title">Kip</div>
             <div class="footer-subtitle" data-i18n="footer.subtitle">A programming language in Turkish where grammatical case and mood are part of the type system.</div>
@@ -96,8 +96,8 @@
       </div>
     </footer>
     <script type="module">
-      import { highlightKeywords } from "../../kip-syntax.js";
-      const b64 = "dGVtZWxpIHnDvGtsZS4KCigqIERvxJ9ydWx1ayBmb25rc2l5b25sYXLEsS4gKikKCigqCkJpciBkb8SfcnVsdWsgZGXEn2VyaW5pbiB0ZXJzaW5pIMO8cmV0aXIuCi0gZG/En3J1IHZlcmlsaXJzZSB5YW5sxLHFnyBkw7ZuZXIuCi0geWFubMSxxZ8gdmVyaWxpcnNlIGRvxJ9ydSBkw7ZuZXIuCkvEsXNhY2EgbWFudMSxa3NhbCAiZGXEn2lsIiBpxZ9sZW1pbmkgeWFwYXIuCsOWcm5layBrdWxsYW7EsW06IChkb8SfcnVudW4gdGVyc2kpCiopCihidSBkb8SfcnVsdcSfdW4pICh0ZXJzIGRvxJ9ydWx1xJ91KSwKICBidSBkb8SfcnV5c2EsIHlhbmzEscWfOwogIHlhbmzEscWfc2EsIGRvxJ9ydWR1ci4KCigqCsSwa2kgZG/En3J1bHVrIMO8emVyaW5kZSBtYW50xLFrc2FsICJ2ZSIgKEFORCkgdXlndWxhci4KLSBTb2wgdGFyYWYgZG/En3J1eXNhIHNvbnXDpyBzYcSfIHRhcmFmYSBlxZ9pdCBvbHVyLgotIFNvbCB0YXJhZiB5YW5sxLHFn3NhIHNvbnXDpyBkb8SfcnVkYW4geWFubMSxxZ90xLFyLgpCdSB5w7x6ZGVuIGvEsXNhIGRldnJlbGkgdmUgacWfbGVtaSBnaWJpIGRhdnJhbsSxci4Kw5ZybmVrIGt1bGxhbsSxbTogKGRvxJ9ydXlsYSB5YW5sxLHFn8SxbiBrZXNpxZ9pbWkpCiopCihidSBkb8SfcnVsdWtsYSkgKMWfdSBkb8SfcnVsdcSfdW4pIChrZXNpxZ9pbSBkb8SfcnVsdcSfdSksCiAgYnUgZG/En3J1eXNhLAogICAgxZ91OwogIHlhbmzEscWfc2EsCiAgICB5YW5sxLHFn3TEsXIuCgooKgrEsGtpIGRvxJ9ydWx1ayDDvHplcmluZGUgbWFudMSxa3NhbCAidmV5YSIgKE9SKSB1eWd1bGFyLgotIFNvbCB0YXJhZiBkb8SfcnV5c2Egc29udcOnIGRvxJ9ydWRhbiBkb8SfcnVkdXIuCi0gU29sIHRhcmFmIHlhbmzEscWfc2Egc29udcOnIHNhxJ8gdGFyYWZhIGXFn2l0IG9sdXIuCkJ1IHnDvHpkZW4ga8Sxc2EgZGV2cmVsaSB2ZXlhIGnFn2xlbWkgZ2liaSBkYXZyYW7EsXIuCsOWcm5layBrdWxsYW7EsW06ICh5YW5sxLHFn2xhIGRvxJ9ydW51biBiaXJsZcWfaW1pKQoqKQooYnUgZG/En3J1bHVrbGEpICjFn3UgZG/En3J1bHXEn3VuKSAoYmlybGXFn2ltIGRvxJ9ydWx1xJ91KSwKICBidSBkb8SfcnV5c2EsCiAgICBkb8SfcnU7CiAgeWFubMSxxZ9zYSwKICAgIMWfdWR1ci4K";
+      import { highlightKeywords } from "../../../kip-syntax.js";
+      const b64 = "dGVtZWxpIHnDvGtsZS4KCigqIE9uZGFsxLFrIHNhecSxIGZvbmtzaXlvbmxhcsSxLiAqKQoKKCoKxLBraSBvbmRhbMSxayBzYXnEsXnEsSB0b3BsYXIuCsOWcm5layBrdWxsYW7EsW06ICgxLjUnbGUgMi4yNSdpbiB0b3BsYW3EsSkKKikKKGJ1IG9uZGFsxLFrLXNhecSxeWxhKSAoxZ91IG9uZGFsxLFrLXNhecSxbsSxbikgKHRvcGxhbSBvbmRhbMSxay1zYXnEsXPEsSksCiAgeWVybGXFn2lrdGlyLgoKKCoKxLBraSBvbmRhbMSxayBzYXnEsXnEsSDDp2FycGFyLgrDlnJuZWsga3VsbGFuxLFtOiAoMi4wJ2xhIDMuNSdpbiDDp2FycMSxbcSxKQoqKQooYnUgb25kYWzEsWstc2F5xLF5bGEpICjFn3Ugb25kYWzEsWstc2F5xLFuxLFuKSAow6dhcnDEsW0gb25kYWzEsWstc2F5xLFzxLEpLAogIHllcmxlxZ9pa3Rpci4KCigqCsSwbGsgc2F5xLFkYW4gaWtpbmNpIHNhecSxecSxIMOnxLFrYXLEsXIuCsOWcm5layBrdWxsYW7EsW06ICg1LjAnbGEgMS4yNSdpbiBmYXJrxLEpCiopCihidSBvbmRhbMSxay1zYXnEsXlsYSkgKMWfdSBvbmRhbMSxay1zYXnEsW7EsW4pIChmYXJrIG9uZGFsxLFrLXNhecSxc8SxKSwKICB5ZXJsZcWfaWt0aXIuCgooKgrEsGxrIHNhecSxecSxIGlraW5jaSBzYXnEsXlhIGLDtmxlci4Kw5ZybmVrIGt1bGxhbsSxbTogKDcuNSdpbiAyLjUnZSBiw7Zsw7xtw7wpCiopCihidSBvbmRhbMSxay1zYXnEsW7EsW4pICjFn3Ugb25kYWzEsWstc2F5xLF5YSkgKGLDtmzDvG0gb25kYWzEsWstc2F5xLFzxLEpLAogIHllcmxlxZ9pa3Rpci4KCigqCsSwa2kgb25kYWzEsWsgc2F5xLFuxLFuIGXFn2l0IG9sdXAgb2xtYWTEscSfxLFuxLEgZG/En3J1bHVrIG9sYXJhayBkw7ZuZMO8csO8ci4Kw5ZybmVrIGt1bGxhbsSxbTogKDMuMCdsYSAzLjAnxLFuIGXFn2l0bGnEn2kpCiopCihidSBvbmRhbMSxay1zYXnEsXlsYSkgKMWfdSBvbmRhbMSxay1zYXnEsW7EsW4pIChlxZ9pdGxpayBkb8SfcnVsdcSfdSksCiAgeWVybGXFn2lrdGlyLgoKKCoKxLBsayBzYXnEsW7EsW4gaWtpbmNpIHNhecSxZGFuIGvDvMOnw7xrIG9sdXAgb2xtYWTEscSfxLFuxLEgZMO2bmTDvHLDvHIuCsOWcm5layBrdWxsYW7EsW06ICgyLjAnxLFuIDMuMCdkYW4ga8O8w6fDvGtsw7zEn8O8KQoqKQooYnUgb25kYWzEsWstc2F5xLFuxLFuKSAoxZ91IG9uZGFsxLFrLXNhecSxZGFuKSAoa8O8w6fDvGtsw7xrIGRvxJ9ydWx1xJ91KSwKICB5ZXJsZcWfaWt0aXIuCgooKgrEsGxrIHNhecSxbsSxbiBpa2luY2kgc2F5xLFkYW4ga8O8w6fDvGstZcWfaXQgb2x1cCBvbG1hZMSxxJ/EsW7EsSBkw7ZuZMO8csO8ci4Kw5ZybmVrIGt1bGxhbsSxbTogKDIuMCfEsW4gMi4wJ2RhbiBrw7zDp8O8ay1lxZ9pdGxpxJ9pKQoqKQooYnUgb25kYWzEsWstc2F5xLFuxLFuKSAoxZ91IG9uZGFsxLFrLXNhecSxZGFuKSAoa8O8w6fDvGstZcWfaXRsaWsgZG/En3J1bHXEn3UpLAogIHllcmxlxZ9pa3Rpci4KCigqCsSwbGsgc2F5xLFuxLFuIGlraW5jaSBzYXnEsWRhbiBiw7x5w7xrIG9sdXAgb2xtYWTEscSfxLFuxLEgZMO2bmTDvHLDvHIuCsOWcm5layBrdWxsYW7EsW06ICg0LjInbmluIDEuMSdkZW4gYsO8ecO8a2zDvMSfw7wpCiopCihidSBvbmRhbMSxay1zYXnEsW7EsW4pICjFn3Ugb25kYWzEsWstc2F5xLFkYW4pIChiw7x5w7xrbMO8ayBkb8SfcnVsdcSfdSksCiAgeWVybGXFn2lrdGlyLgoKKCoKxLBsayBzYXnEsW7EsW4gaWtpbmNpIHNhecSxZGFuIGLDvHnDvGstZcWfaXQgb2x1cCBvbG1hZMSxxJ/EsW7EsSBkw7ZuZMO8csO8ci4Kw5ZybmVrIGt1bGxhbsSxbTogKDQuMid5bGUgNC4yJ25pbiBiw7x5w7xrLWXFn2l0bGnEn2kpCiopCihidSBvbmRhbMSxay1zYXnEsXlsYSkgKMWfdSBvbmRhbMSxay1zYXnEsW7EsW4pIChiw7x5w7xrLWXFn2l0bGlrIGRvxJ9ydWx1xJ91KSwKICB5ZXJsZcWfaWt0aXIuCgooKgpPbmRhbMSxayBzYXnEsWxhcmRhIGthbGFuIChtb2QpIGnFn2xlbWkgdXlndWxhci4Kw5ZybmVrIGt1bGxhbsSxbTogKDcuNSdpbiAyLjAnbGEga2FsYW7EsSkKKikKKGJ1IG9uZGFsxLFrLXNhecSxbsSxbikgKMWfdSBvbmRhbMSxay1zYXnEsXlsYSkgKGthbGFuIG9uZGFsxLFrLXNhecSxc8SxKSwKICB5ZXJsZcWfaWt0aXIuCgooKgrEsGxrIHNhecSxbsSxbiBpa2luY2kgc2F5xLF5YSBrYWxhbnPEsXogYsO2bMO8bsO8cCBiw7Zsw7xubWVkacSfaW5pIGtvbnRyb2wgZWRlci4KS2FsYW4gMC4wIGlzZSBkb8SfcnUgZMO2bmVyLgrDlnJuZWsga3VsbGFuxLFtOiAoNi4wJ2xhIDMuMCdhIGLDtmzDvG7DvHJsw7xrKQoqKQooYnUgb25kYWzEsWstc2F5xLF5bGEpICjFn3Ugb25kYWzEsWstc2F5xLF5YSkgKGLDtmzDvG7DvHJsw7xrIGRvxJ9ydWx1xJ91KSwKICAoYnVudW4gxZ91bmxhIGthbGFuxLF5bGEpIDAuMCfEsW4gZcWfaXRsacSfaWRpci4KCigqCk9uZGFsxLFrIHNhecSxecSxIG1ldGluc2VsIGfDtnN0ZXJpbWluZSAoZGl6Z2V5ZSkgw6dldmlyaXIuCsOWcm5layBrdWxsYW7EsW06ICgzLjE0J8O8biBkaXpnZS1oYWxpKQoqKQooYnUgb25kYWzEsWstc2F5xLFuxLFuKSAoZGl6Z2UtaGFsIGRpemdlc2kpLAogIHllcmxlxZ9pa3Rpci4KCigqCkJpciBzYXnEsW7EsW4gacWfYXJldGluaSB0ZXJzaW5lIMOnZXZpcmlyLgpQb3ppdGlmc2UgbmVnYXRpZiwgbmVnYXRpZnNlIHBveml0aWYgZGXEn2VyaSDDvHJldGlyLgrDlnJuZWsga3VsbGFuxLFtOiAoMy41J2luIG5lZ2F0aWZpKQoqKQooYnUgb25kYWzEsWstc2F5xLFuxLFuKSBuZWdhdGlmaSwKICAwLjAnbGEgYnVudW4gZmFya8SxZMSxci4KCigqCk11dGxhayBkZcSfZXIgw7xyZXRpci4KU2F5xLEgbmVnYXRpZnNlIG5lZ2F0aWZpbmkgYWzEsXIsIGRlxJ9pbHNlIHNhecSxecSxIG9sZHXEn3UgZ2liaSBkw7ZuZMO8csO8ci4Kw5ZybmVrIGt1bGxhbsSxbTogKCgtMy41J2luKSBtdXRsYWstZGXEn2VyaSkKKikKKGJ1IG9uZGFsxLFrLXNhecSxbsSxbikgKG11dGxhay1kZcSfZXIgb25kYWzEsWstc2F5xLFzxLEpLAogIChidW51biAwLjAnZGFuIGvDvMOnw7xrbMO8xJ/DvCkgZG/En3J1eXNhLAogICAgKGJ1bnVuIG5lZ2F0aWZpKTsKICBkZcSfaWxzZSwKICAgIGJ1ZHVyLgoKKCoKxLBraSBvbmRhbMSxayBzYXnEsWRhbiBrw7zDp8O8ayBvbGFuxLEgc2XDp2VyLgrDlnJuZWsga3VsbGFuxLFtOiAoMi41J2xlIDcuMSdpbiBrw7zDp8O8xJ/DvCkKKikKKGJ1IG9uZGFsxLFrLXNhecSxeWxhKSAoxZ91IG9uZGFsxLFrLXNhecSxbsSxbikgKGvDvMOnw7xrIG9uZGFsxLFrLXNhecSxc8SxKSwKICAoYnVudW4gxZ91bmRhbiBrw7zDp8O8a2zDvMSfw7wpIGRvxJ9ydXlzYSwKICAgIGJ1ZHVyOwogIGRlxJ9pbHNlLAogICAgxZ91ZHVyLgoKKCoKxLBraSBvbmRhbMSxayBzYXnEsWRhbiBiw7x5w7xrIG9sYW7EsSBzZcOnZXIuCsOWcm5layBrdWxsYW7EsW06ICgyLjUnbGUgNy4xJ2luIGLDvHnDvMSfw7wpCiopCihidSBvbmRhbMSxay1zYXnEsXlsYSkgKMWfdSBvbmRhbMSxay1zYXnEsW7EsW4pIChiw7x5w7xrIG9uZGFsxLFrLXNhecSxc8SxKSwKICAoYnVudW4gxZ91bmRhbiBiw7x5w7xrbMO8xJ/DvCkgZG/En3J1eXNhLAogICAgYnVkdXI7CiAgZGXEn2lsc2UsCiAgICDFn3VkdXIuCgooKgpCaXIgb25kYWzEsWsgc2F5xLFuxLFuIHRhYmFuIGRlxJ9lcmluaSAoZmxvb3IpIGhlc2FwbGFyLgpTYXnEsWRhbiBrw7zDp8O8ayB2ZXlhIGXFn2l0IG9sYW4gZW4gYsO8ecO8ayB0YW0gc2F5xLEgZGXEn2VyaW5pIGTDtm5kw7xyw7xyLgrDlnJuZWsga3VsbGFuxLFtOiAoMy43J25pbiB0YWJhbsSxKQoqKQooYnUgb25kYWzEsWstc2F5xLFuxLFuKSAodGFiYW4gdGFtLXNhecSxc8SxKSwKICB5ZXJsZcWfaWt0aXIuCgooKgpCaXIgb25kYWzEsWsgc2F5xLFuxLFuIHRhdmFuIGRlxJ9lcmluaSAoY2VpbGluZykgaGVzYXBsYXIuClNhecSxZGFuIGLDvHnDvGsgdmV5YSBlxZ9pdCBvbGFuIGVuIGvDvMOnw7xrIHRhbSBzYXnEsSBkZcSfZXJpbmkgZMO2bmTDvHLDvHIuCsOWcm5layBrdWxsYW7EsW06ICgzLjInbmluIHRhdmFuxLEpCiopCihidSBvbmRhbMSxay1zYXnEsW7EsW4pICh0YXZhbiB0YW0tc2F5xLFzxLEpLAogIHllcmxlxZ9pa3Rpci4KCigqCkJpciBvbmRhbMSxayBzYXnEsW7EsW4ga2FyZWvDtmvDvG7DvCBoZXNhcGxhci4Kw5ZybmVrIGt1bGxhbsSxbTogKDI1LjAnxLFuIGthcmVrw7Zrw7wpCiopCihidSBvbmRhbMSxay1zYXnEsW7EsW4pIChrYXJla8O2ayBvbmRhbMSxay1zYXnEsXPEsSksCiAgeWVybGXFn2lrdGlyLgoKKCoKNjQgYml0ZSBzxLHEn2TEscSfxLEga2FkYXLEsXlsYSBwaSBzYWJpdGkuCiopCnBpLXNhecSxc8SxLCAzLjE0MTU5MjY1MzU4OTc5MydkaXIuCgooKgpBcmfDvG1hbiBvbGFyYWsgYWxkxLHEn8SxIGRlcmVjZW5pbiByYWR5YW7EsW7EsSB2ZXJpci4KKikKKGJ1IG9uZGFsxLFrLXNhecSxbsSxbikgKHJhZHlhbiBvbmRhbMSxay1zYXnEsXPEsSksCiAgKGJ1bnVuIHBpLXNhecSxc8SxeWxhIMOnYXJwxLFtxLFuxLFuKSAxODAuMCdlIGLDtmzDvG3DvGTDvHIuCgooKgpBcmfDvG1hbiBvbGFyYWsgYWxkxLHEn8SxIHJhZHlhbsSxbiBkZXJlY2VzaW5pIHZlcmlyLgoqKQooYnUgb25kYWzEsWstc2F5xLFuxLFuKSAoZGVyZWNlIG9uZGFsxLFrLXNhecSxc8SxKSwKICAoYnVudW4gMTgwLjAnbGUgw6dhcnDEsW3EsW7EsW4pIHBpLXNhecSxc8SxbmEgYsO2bMO8bcO8ZMO8ci4K";
       const bytes = Uint8Array.from(atob(b64), (ch) => ch.charCodeAt(0));
       const source = new TextDecoder().decode(bytes);
       document.getElementById("lib-source").innerHTML = highlightKeywords(source);
